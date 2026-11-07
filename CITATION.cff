@@ -7,7 +7,7 @@ authors:
     email: dylan@cogitan.ai
     affiliation: "Cogitan"
 license: MIT
-repository-code: "https://github.com/CogitanAI/gentle-readout"
+repository-code: "https://github.com/Cogitan/gentle-readout"
 doi: "10.5281/zenodo.21464317"
 date-released: "2026-10-06"
 version: "1.3"
