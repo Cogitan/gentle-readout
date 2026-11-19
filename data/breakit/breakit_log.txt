@@ -1,0 +1,65 @@
+== HARNESS: Table II at gamma = 0.05
+cat/parity                 g=0.05  Gamma_self=9.994e-02 bound=9.995e-02 (kappa 9.99e-02, KL 6.44e-35) ratio=1.0 ok
+cat/mod-q                  g=0.05  Gamma_self=1.685e-03 bound=3.963e-05 (kappa 3.96e-05, KL 1.15e-05) ratio=42.523 ok
+cat/mod-p                  g=0.05  Gamma_self=9.473e-03 bound=2.294e-03 (kappa 2.29e-03, KL 4.76e-04) ratio=4.128 ok
+cat/q                      g=0.05  Gamma_self=1.177e-03 bound=1.903e-04 (kappa 1.90e-04, KL 1.81e-04) ratio=6.185 ok
+cat/p                      g=0.05  Gamma_self=1.544e-03 bound=1.903e-04 (kappa 1.90e-04, KL 1.81e-04) ratio=8.116 ok
+cat/n                      g=0.05  Gamma_self=4.793e-03 bound=7.230e-04 (kappa 7.23e-04, KL 3.76e-04) ratio=6.629 ok
+GKP/parity                 g=0.05  Gamma_self=1.368e-08 bound=4.046e-23 (kappa 2.13e-33, KL 4.05e-23) ratio=338127908371725.0 not judged
+GKP/mod-q                  g=0.05  Gamma_self=1.714e-03 bound=2.142e-04 (kappa 1.98e-04, KL 2.14e-04) ratio=8.005 ok
+GKP/mod-p                  g=0.05  Gamma_self=7.489e-02 bound=7.089e-02 (kappa 7.09e-02, KL 3.39e-07) ratio=1.056 ok
+GKP/q                      g=0.05  Gamma_self=3.263e-03 bound=9.812e-06 (kappa 1.94e-22, KL 9.81e-06) ratio=332.53 UNSTABLE not judged
+GKP/p                      g=0.05  Gamma_self=4.984e-02 bound=3.848e-03 (kappa 2.66e-23, KL 3.85e-03) ratio=12.952 ok
+GKP/n                      g=0.05  Gamma_self=1.070e-01 bound=1.634e-02 (kappa 1.63e-02, KL 5.34e-03) ratio=6.55 ok
+== ARM A: non-Hermitian meters at gamma = 0.05
+A cat/a                    g=0.05  Gamma_self=2.432e-04 bound=1.903e-04 (kappa 1.90e-04, KL 8.41e-36) ratio=1.278 ok
+A cat/a2                   g=0.05  Gamma_self=1.581e-07 bound=9.818e-32 (kappa 9.82e-32, KL 3.13e-33) ratio=1.610676435372659e+24 UNSTABLE not judged
+A cat/E                    g=0.05  Gamma_self=1.377e-03 bound=4.358e-04 (kappa 4.36e-04, KL 2.56e-04) ratio=3.16 ok
+A cat/E2                   g=0.05  Gamma_self=1.869e-03 bound=4.749e-04 (kappa 3.82e-04, KL 4.75e-04) ratio=3.936 ok
+A GKP/a                    g=0.05  Gamma_self=2.156e-02 bound=1.101e-03 (kappa 1.10e-22, KL 1.10e-03) ratio=19.574 ok
+A GKP/a2                   g=0.05  Gamma_self=1.575e-01 bound=2.020e-02 (kappa 2.02e-02, KL 2.33e-04) ratio=7.795 ok
+A GKP/E                    g=0.05  Gamma_self=1.030e-02 bound=1.404e-03 (kappa 2.83e-23, KL 1.40e-03) ratio=7.333 ok
+A GKP/E2                   g=0.05  Gamma_self=2.989e-02 bound=1.944e-02 (kappa 1.94e-02, KL 4.18e-04) ratio=1.537 ok
+== ARM B: Hermitian Table II meters at strong gamma
+B cat/parity               g=0.2   Gamma_self=3.997e-01 bound=3.998e-01 (kappa 4.00e-01, KL 2.58e-34) ratio=1.0 ok
+B cat/parity               g=0.8   Gamma_self=1.596e+00 bound=1.599e+00 (kappa 1.60e+00, KL 1.03e-33) ratio=0.998 ok
+B cat/parity               g=3.2   Gamma_self=9.742e-08 bound=6.397e+00 (kappa 6.40e+00, KL 4.12e-33) ratio=0.0 UNSTABLE not judged
+B cat/mod-q                g=0.2   Gamma_self=6.753e-03 bound=1.585e-04 (kappa 1.59e-04, KL 4.59e-05) ratio=42.601 ok
+B cat/mod-q                g=0.8   Gamma_self=2.713e-02 bound=6.341e-04 (kappa 6.34e-04, KL 1.84e-04) ratio=42.786 ok
+B cat/mod-q                g=3.2   Gamma_self=1.077e-01 bound=2.536e-03 (kappa 2.54e-03, KL 7.35e-04) ratio=42.473 ok
+B cat/mod-p                g=0.2   Gamma_self=3.753e-02 bound=9.178e-03 (kappa 9.18e-03, KL 1.90e-03) ratio=4.089 ok
+B cat/mod-p                g=0.8   Gamma_self=1.449e-01 bound=3.671e-02 (kappa 3.67e-02, KL 7.61e-03) ratio=3.947 ok
+B cat/mod-p                g=3.2   Gamma_self=5.192e-01 bound=1.468e-01 (kappa 1.47e-01, KL 3.04e-02) ratio=3.536 ok
+B cat/q                    g=0.2   Gamma_self=4.322e-03 bound=7.611e-04 (kappa 7.61e-04, KL 7.23e-04) ratio=5.679 ok
+B cat/q                    g=0.8   Gamma_self=1.694e-02 bound=3.044e-03 (kappa 3.04e-03, KL 2.89e-03) ratio=5.565 ok
+B cat/q                    g=3.2   Gamma_self=6.944e-02 bound=1.218e-02 (kappa 1.22e-02, KL 1.16e-02) ratio=5.702 ok
+B cat/p                    g=0.2   Gamma_self=8.695e-03 bound=7.611e-04 (kappa 7.61e-04, KL 7.23e-04) ratio=11.424 ok
+B cat/p                    g=0.8   Gamma_self=6.058e-02 bound=3.044e-03 (kappa 3.04e-03, KL 2.89e-03) ratio=19.898 ok
+B cat/p                    g=3.2   Gamma_self=3.637e-01 bound=1.218e-02 (kappa 1.22e-02, KL 1.16e-02) ratio=29.87 ok
+B cat/n                    g=0.2   Gamma_self=2.539e-02 bound=2.892e-03 (kappa 2.89e-03, KL 1.51e-03) ratio=8.779 ok
+B cat/n                    g=0.8   Gamma_self=1.796e-01 bound=1.157e-02 (kappa 1.16e-02, KL 6.02e-03) ratio=15.529 ok
+B cat/n                    g=3.2   Gamma_self=1.186e+00 bound=4.627e-02 (kappa 4.63e-02, KL 2.41e-02) ratio=25.625 ok
+B GKP/parity               g=0.2   Gamma_self=1.356e-08 bound=1.619e-22 (kappa 8.52e-33, KL 1.62e-22) ratio=83798017380219.53 not judged
+B GKP/parity               g=0.8   Gamma_self=1.418e-08 bound=6.474e-22 (kappa 3.41e-32, KL 6.47e-22) ratio=21895675124340.062 not judged
+B GKP/parity               g=3.2   Gamma_self=1.452e-08 bound=2.590e-21 (kappa 1.36e-31, KL 2.59e-21) ratio=5606049922949.976 not judged
+B GKP/mod-q                g=0.2   Gamma_self=6.679e-03 bound=8.566e-04 (kappa 7.93e-04, KL 8.57e-04) ratio=7.797 ok
+B GKP/mod-q                g=0.8   Gamma_self=2.488e-02 bound=3.426e-03 (kappa 3.17e-03, KL 3.43e-03) ratio=7.262 ok
+B GKP/mod-q                g=3.2   Gamma_self=9.029e-02 bound=1.371e-02 (kappa 1.27e-02, KL 1.37e-02) ratio=6.588 ok
+B GKP/mod-p                g=0.2   Gamma_self=2.988e-01 bound=2.836e-01 (kappa 2.84e-01, KL 1.36e-06) ratio=1.054 ok
+B GKP/mod-p                g=0.8   Gamma_self=1.180e+00 bound=1.134e+00 (kappa 1.13e+00, KL 5.42e-06) ratio=1.04 ok
+B GKP/mod-p                g=3.2   Gamma_self=9.063e-02 bound=4.537e+00 (kappa 4.54e+00, KL 2.17e-05) ratio=0.02 UNSTABLE not judged
+B GKP/q                    g=0.2   Gamma_self=1.206e-02 bound=3.925e-05 (kappa 7.74e-22, KL 3.92e-05) ratio=307.271 ok
+B GKP/q                    g=0.8   Gamma_self=4.127e-02 bound=1.570e-04 (kappa 3.10e-21, KL 1.57e-04) ratio=262.868 ok
+B GKP/q                    g=3.2   Gamma_self=1.337e-01 bound=6.280e-04 (kappa 1.24e-20, KL 6.28e-04) ratio=212.986 ok
+B GKP/p                    g=0.2   Gamma_self=2.167e-01 bound=1.539e-02 (kappa 1.06e-22, KL 1.54e-02) ratio=14.074 ok
+B GKP/p                    g=0.8   Gamma_self=9.930e-01 bound=6.157e-02 (kappa 4.25e-22, KL 6.16e-02) ratio=16.126 ok
+B GKP/p                    g=3.2   Gamma_self=3.688e+00 bound=2.463e-01 (kappa 1.70e-21, KL 2.46e-01) ratio=14.973 ok
+B GKP/n                    g=0.2   Gamma_self=3.835e-01 bound=6.536e-02 (kappa 6.54e-02, KL 2.14e-02) ratio=5.867 ok
+B GKP/n                    g=0.8   Gamma_self=9.603e-01 bound=2.614e-01 (kappa 2.61e-01, KL 8.55e-02) ratio=3.673 ok
+B GKP/n                    g=3.2   Gamma_self=8.512e-01 bound=1.046e+00 (kappa 1.05e+00, KL 3.42e-01) ratio=0.814 ok
+== SUMMARY {
+ "arm_A_judged": 7,
+ "arm_A_violations": [],
+ "arm_B_judged": 31,
+ "arm_B_violations": []
+}

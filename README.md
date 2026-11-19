@@ -4,6 +4,7 @@ Reproduces the numerical results and figure of
 
 > D. Henderson, *How gently can a protected quantum memory be read? Rate limits
 > on logical readout from the structure of the code* (2026).
+> Preprint: https://doi.org/10.5281/zenodo.21971432
 
 This is a self-contained reproducibility release. It contains only the code
 needed to regenerate the paper's tables, figure, and analytic-lemma checks —
@@ -22,17 +23,17 @@ qudlab/loss_correction.py    logical-rate ("protection") scoring
 gkp_qudit2.py                finite-energy GKP codewords and jump operators
 perception_frontier.py       the signal (S) and disturbance functionals; code+meter builders
 perception_step3.py          spectral rate extraction; produces the self/conjugate
-                             split, i.e. the Gamma_conj column of Table I
+                             split, i.e. the Gamma_conj column of Table II
 perception_ruler.py          functional validation (standalone)
-autocorr_extract_d3fix.py    windowed-autocorrelation self-rate extraction (Tables I/II, incl. d>2)
+autocorr_extract_d3fix.py    windowed-autocorrelation self-rate extraction (Tables II/III, incl. d>2)
 round10_stageA.py            GKP rectangular-lattice aspect sweep r in {0.75, 0.85, 1.0,
                              1.18, 1.35} -> the readability/protection trade-off curve of
-                             Sec. V and the lattice curve in Fig. 1b
+                             Sec. VI and the lattice curve in Fig. 1b
 one_r.py                     runs a single aspect ratio of round10_stageA in a fresh
                              process (needed for r > 1 on memory-limited machines;
                              see the note under Reproduce)
 round10_stageB.py            the 48 generalized-number-code search (Fig. 1b cloud)
-nogo_sweep.py                meter-menu self-reporting search + exponential-floor fits (Sec. VI)
+nogo_sweep.py                meter-menu self-reporting search + exponential-floor fits (Secs. VI-VII)
 proof_gkp.py                 analytic GKP tuned-zero lemma: closed-form checks to machine precision
 lemma_A_validation.py        dense 4-level model: Assumption-A remainder + flux-identity checks (App. C/D)
 gamma_sweep.py               sweeps gamma over 256x to test whether the residual
@@ -41,15 +42,19 @@ gamma_sweep.py               sweeps gamma over 256x to test whether the residual
 fig1.py                      renders Figure 1 from the tabulated values
 e1_flux_decomposition.py     (v1.3) flux-identity prediction of every Table III cell from
                              the stabilizer's own cascaded return channel; recovery
-                             shortfall and chain loss (Table II, Sec. III.A)
+                             shortfall and chain loss (Table I, Sec. IV.A)
 e1c_leff.py                  (v1.3) exact 4x4 leading-order generator L_eff; its slow
-                             mode vs the full-Liouvillian spectral rate (Sec. III.A)
+                             mode vs the full-Liouvillian spectral rate (Sec. IV.A)
 e2_gkpq_convergence.py       (v1.3) GKP-q self-rate converged in Fock cutoff N=80..110
 e3_block_identities.py       (v1.3) machine check of the block identities, drain identity
                              and exact trace preservation of R used in Supplement S1-S5
 verify_nogo.py               (v1.3) tuned-GKP common zero + winding number; cat
-                             quadratic-floor scaling fit (Sec. VI, Supplement S6)
-verify_nogo2.py              (v1.3) two-tone sine meter zeros on the cat leg basis (Sec. VI)
+                             quadratic-floor scaling fit (Sec. VII, Supplement S6)
+verify_nogo2.py              (v1.3) two-tone sine meter zeros on the cat leg basis (Sec. VII)
+breakit.py                   (v1.4) break-it test of the bound outside its hypotheses:
+                             non-Hermitian meters and 4x/16x/64x measurement strength
+                             (Sec. VIII, Discussion); rules pre-registered in
+                             data/breakit/PREREG_2026-10-24.md
 data/                        saved outputs (JSON) — regenerate with the commands below
 ```
 
@@ -61,12 +66,12 @@ python proof_gkp.py                        # GKP tuned-zero: C(Δ), Δm, κ, Λ0
                                            #   compare against data/proof_gkp_results.json
 python lemma_A_validation.py               # Assumption-A remainder O(1/g), flux identity, g-sweep
                                            #   writes data/lemma_A_validation.json
-python nogo_sweep.py data/nogo_results.json   # menu no-go sweep + floor fits (Sec. VI)
+python nogo_sweep.py data/nogo_results.json   # menu no-go sweep + floor fits (Secs. VI-VII)
                                            #   the output path is the first argument; with no
                                            #   argument it writes nogo_results.json in the
                                            #   current directory instead
 
-# Table II (tab:bound): all twelve d=2 (code, meter) cells, each checked against
+# Table III (tab:bound): all twelve d=2 (code, meter) cells, each checked against
 # the printed value as it is produced. ~20 min (dense, N=80 for the GKP rows):
 python -u autocorr_extract_d3fix.py table2   > data/table2_cells.txt
 
@@ -76,14 +81,14 @@ python -u autocorr_extract_d3fix.py table2   > data/table2_cells.txt
 python -u gamma_sweep.py
 
 # Atlas self-rates (dense Liouvillian eigensolves; minutes per cell):
-python autocorr_extract_d3fix.py cat3        # cat d=3  (Table I)
-python autocorr_extract_d3fix.py cat4        # cat d=4  (Table I)
-python autocorr_extract_d3fix.py gkp3 90     # GKP d=3 at Fock cutoff N=90 (Table I)
+python autocorr_extract_d3fix.py cat3        # cat d=3  (Table II)
+python autocorr_extract_d3fix.py cat4        # cat d=4  (Table II)
+python autocorr_extract_d3fix.py gkp3 90     # GKP d=3 at Fock cutoff N=90 (Table II)
 
-# Conjugate rates -- the Gamma_conj column of Table I, all rows:
+# Conjugate rates -- the Gamma_conj column of Table II, all rows:
 python perception_step3.py       > data/conjugate_rates.txt
 
-# GKP lattice aspect sweep -- Sec. V trade-off curve and the Fig. 1b lattice line:
+# GKP lattice aspect sweep -- the trade-off curve (Sec. VI) and the Fig. 1b lattice line:
 python -u round10_stageA.py      > data/lattice_sweep_results.txt
 
 # If that sweep dies at r = 1.18 with
@@ -107,11 +112,20 @@ python -u e2_gkpq_convergence.py           # N = 80 90 100 110, ~4 min per N
 python -u e3_block_identities.py           # seconds; prints ALL PASS
 python -u verify_nogo.py                   # minutes; reads data/nogo_results.json
 python -u verify_nogo2.py                  # minutes
+
+# v1.4 addition (break-it test, reported in the Discussion). Dense: 56 cells,
+# the twelve harness cells alone ~20 min. Writes breakit_results.json next to
+# the script (cached per cell, so it resumes); shipped copy and the original
+# log are in data/breakit/:
+python -u breakit.py
 ```
 
-Table numbering changed in the 2026-10-06 revision: the verification grid
-(`tab:bound`, called "Table II" elsewhere in this README) is now **Table III**,
-and the new flux-identity table is Table II.
+Table and section numbers in this README follow the current preprint (v2.0,
+2026-11-19): Table I is the flux-identity prediction, Table II the readability
+atlas, and Table III the verification grid (`tab:bound`; the variable
+`TABLE2_PRINTED` keeps its old name). The journal build numbers the same tables
+1-3 and the sections with Arabic numerals (Sec. IV.A is Sect. 4.1). The
+Corrections below keep the numbers that were in use when each was written.
 
 ## Reproduction status
 
@@ -142,6 +156,19 @@ winding numbers, badness floors, fit exponents); their remaining differences
 from a July 2026 run are at machine precision (~1e-16) or are equally optimal
 parameters returned by a local optimizer in the V-floored meter search.
 
+### v1.4 break-it test (2026-10-24)
+
+`breakit.py` was pre-registered (`data/breakit/PREREG_2026-10-24.md`) before it
+was written, and its harness first reproduces all twelve Table III cells within
+15% (largest deviation GKP/n, +12.6%, the known 1.13x cell). Arm A, non-Hermitian
+meters at gamma = 0.05: 7 cells judged, measured rate above the bound by factors
+1.28 to 19.6. Arm B, the Table III meters at 4x, 16x and 64x: 31 cells judged,
+none below 0.8x the bound, but GKP read through n falls from 5.87x to 3.67x to
+0.81x of the bound as the strength grows, so the bound is a weak-measurement
+statement. Five Arm B cells are not judged (bound below 1e-6, or decay faster
+than the first window at 64x). Shipped: `data/breakit/breakit_results.json` and
+the original run log `data/breakit/breakit_log.txt`.
+
 ## Notes
 - `qutip==5.3.0` is the version used for the paper; other 5.x releases should work
   but were not validated. The bit-identical re-run above used numpy 2.2.6 and
@@ -168,8 +195,15 @@ MIT (see LICENSE).
 
 ## Corrections
 
+- **v1.4 (2026-11-19).** Adds `breakit.py` and `data/breakit/` so the break-it
+  numbers in the paper's Discussion can be reproduced; the script's import path
+  was changed to this repository's layout, with no change to any computation.
+  Table and section references in this README updated to the v2.0 preprint;
+  CITATION.cff now points at github.com/Cogitan/gentle-readout (the old
+  CogitanAI URL redirects). No shipped number changed.
+
 - **Revision of 2026-10-06 (v1.3).** No shipped number changed. The scripts
-  above were added so that the manuscript's new Sec. III.A, Table II, the GKP-q
+  above were added so that the manuscript's new Sec. III.A, Table II (now Sec. IV.A, Table I), the GKP-q
   convergence statement and Supplement S6 can be reproduced. Two of them were
   developed against a different directory layout; their input paths were
   changed to `data/` for this release, with no change to any computation.
@@ -199,7 +233,7 @@ MIT (see LICENSE).
   anchor rows still carries `0.047` and `0.095`. `gamma_sweep.py` itself has
   been updated, so a re-run reports against the corrected values.
 
-- **GKP-q is the softest number in Table II.** Its windows are still falling at
+- **GKP-q is the softest number in Table III (`tab:bound`).** Its windows are still falling at
   `t = 4`, so `stable()` returns the last one. The printed `3.1e-3` agrees with
   the spectral value to 0.7%, and the "loose by 316x" claim rests on it.
 
